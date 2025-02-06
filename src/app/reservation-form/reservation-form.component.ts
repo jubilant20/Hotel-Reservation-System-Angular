@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReservationService } from '../reservation/reservation.service';
+import { Reservation } from '../models/reservation';
 
 @Component({
   selector: 'app-reservation-form',
@@ -31,7 +32,9 @@ export class ReservationFormComponent implements OnInit{
 
   onSubmit(){
     if(this.reservationForm.valid){
-      console.log("valid")
+      
+      let reservation: Reservation = this.reservationForm.value;
+      this.reservationService.addReservation(reservation)
     }
   }
 
